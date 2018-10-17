@@ -1,28 +1,17 @@
 ;Task1
 (SETQ l '(1 2 3 4 5 6))
 
-(DEFUN SUBLST (l id len)
-    (COND
-        ((NULL l) NIL)
-        ((> id  0) (SUBLST (CDR l) (- id 1) len))
-        ((NULL len) l)
-        ((> len  0) (CONS (CAR l) (SUBLST (CDR l) id (- len 1))))
-    )
-)
-
-(DEFUN REVERSE!(l &optional (n 0))
-        (if (= n (LENGTH l))
+(DEFUN REVERSE!(l)
+        (if (null l)
                 '()
-                (APPEND (REVERSE (SUBLST l n ( - (LENGTH l) n)))
-                      (PROGN
-                            (INCF n)
-                            (REVERSE! l n)
-                      )
+                (APPEND (REVERSE l)
+                                  (REVERSE! (Cdr l))
                 )
         )
 )
 
 (PRINT (REVERSE! l))
+
 
 
 ; Task 2
